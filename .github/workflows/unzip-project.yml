@@ -1,0 +1,94 @@
+name: Unzip Project To Root
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  unzip-project:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Find ZIP file
+        id: zip
+        shell: bash
+        run: |
+          ZIP_FILE=$(find . -maxdepth 1 -type f -iname "*.zip" | head -n 1)
+
+          if [ -z "$ZIP_FILE" ]; then
+            echo "No ZIP file found."
+            echo "found=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "ZIP found: $ZIP_FILE"
+          echo "zip_file=$ZIP_FILE" >> "$GITHUB_OUTPUT"
+          echo "found=true" >> "$GITHUB_OUTPUT"
+
+      - name: Extract project
+        if: steps.zip.outputs.found == 'true'
+        shell: bash
+        run: |
+          set -e
+
+          ZIP_FILE="${{ steps.zip.outputs.zip_file }}"
+
+          rm -rf .extracted-project
+          mkdir -p .extracted-project
+
+          echo "Extracting: $ZIP_FILE"
+          unzip -q "$ZIP_FILE" -d .extracted-project
+
+          echo "Extracted structure:"
+          find .extracted-project -maxdepth 2 -print
+
+          # Find the project directory inside the ZIP
+          TOP_LEVEL_DIRS=$(find .extracted-project -mindepth 1 -maxdepth 1 -type d)
+
+          COUNT=$(echo "$TOP_LEVEL_DIRS" | sed '/^$/d' | wc -l)
+
+          if [ "$COUNT" -ne 1 ]; then
+            echo "ERROR: Expected exactly one project folder inside the ZIP."
+            echo "Found:"
+            echo "$TOP_LEVEL_DIRS"
+            exit 1
+          fi
+
+          PROJECT_DIR="$TOP_LEVEL_DIRS"
+
+          echo "Project directory: $PROJECT_DIR"
+
+          # Copy EVERYTHING from project folder to repository root,
+          # including hidden files such as .gitignore and .env.example
+          cp -a "$PROJECT_DIR"/. .
+
+          # Remove ZIP and temporary extraction directory
+          rm -f "$ZIP_FILE"
+          rm -rf .extracted-project
+
+      - name: Commit extracted project
+        if: steps.zip.outputs.found == 'true'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git commit -m "Extract website project to repository root"
+          git push
