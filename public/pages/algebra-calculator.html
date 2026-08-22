@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Algebra Calculator — Solve Linear & Quadratic Equations Step by Step | CalcVerse</title>
+  <meta name="description" content="Free algebra calculator for solving linear equations, quadratic equations and simplifying expressions with full step-by-step solutions." />
+  <link rel="canonical" href="https://calcverse.app/pages/algebra-calculator.html" />
+  <meta property="og:title" content="Algebra Calculator — CalcVerse" />
+  <meta property="og:description" content="Solve linear and quadratic equations with step-by-step working." />
+  <meta property="og:type" content="website" />
+  <meta name="keywords" content="algebra calculator, solve equations, linear equation solver, quadratic solver, simplify expressions" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="logo"><span class="logo-icon">∑</span> CalcVerse</a>
+      <nav class="main-nav" id="mainNav">
+        <a href="/">Home</a>
+        <a href="/#all-calculators">Calculators</a>
+        <a href="/#categories">Categories</a>
+        <a href="/#about">About</a>
+      </nav>
+      <div class="header-actions">
+        <div class="search-box">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="searchInput" placeholder="Search calculators…" autocomplete="off" aria-label="Search calculators" />
+          <div class="search-results" id="searchResults"></div>
+        </div>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <div class="content-container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span class="sep">›</span>
+        <a href="/#cat-math">Math &amp; Algebra</a><span class="sep">›</span>
+        <span>Algebra Calculator</span>
+      </nav>
+
+      <div class="page-header">
+        <h1>Algebra Calculator</h1>
+        <p class="lead">Solve linear equations, quadratic equations and simplify basic algebraic expressions with clear, step-by-step working. The calculator isolates the unknown variable, showing each algebraic manipulation — subtract, divide, take square roots — so you can follow exactly how the solution is reached.</p>
+      </div>
+
+      <div class="calc-card">
+        <div class="calc-title"><span class="icon">𝑥</span> Algebra Calculator</div>
+        <div class="calc-tabs">
+          <button class="calc-tab active" data-tab="alg-linear">Linear Equation</button>
+          <button class="calc-tab" data-tab="alg-quad">Quadratic Equation</button>
+          <button class="calc-tab" data-tab="alg-simplify">Simplify Expression</button>
+        </div>
+
+        <div class="calc-tab-panel active" id="alg-linear">
+          <p class="form-hint" style="margin-bottom: 1rem;">Solve an equation of the form <strong>ax + b = c</strong> for x.</p>
+          <div class="form-row-3">
+            <div class="form-group">
+              <label class="form-label" for="linA">Coefficient of x (a)</label>
+              <input type="number" class="form-control" id="linA" placeholder="e.g. 3" step="any" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="linB">Constant added (b)</label>
+              <input type="number" class="form-control" id="linB" placeholder="e.g. 7" step="any" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="linC">Right-hand side (c)</label>
+              <input type="number" class="form-control" id="linC" placeholder="e.g. 22" step="any" />
+            </div>
+          </div>
+          <div class="form-inline">
+            <button class="btn btn-primary" id="linBtn">Solve</button>
+            <button class="btn btn-ghost" id="linReset">Clear</button>
+          </div>
+          <div class="result-area" id="linResult"></div>
+          <div class="error-msg" id="linError" role="alert"></div>
+        </div>
+
+        <div class="calc-tab-panel" id="alg-quad">
+          <p class="form-hint" style="margin-bottom: 1rem;">Solve <strong>ax² + bx + c = 0</strong> using the quadratic formula. For full discriminant analysis, see the <a href="/pages/quadratic-equation-calculator.html">Quadratic Equation Calculator</a>.</p>
+          <div class="form-row-3">
+            <div class="form-group">
+              <label class="form-label" for="qaA">Coefficient a</label>
+              <input type="number" class="form-control" id="qaA" placeholder="e.g. 1" step="any" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="qaB">Coefficient b</label>
+              <input type="number" class="form-control" id="qaB" placeholder="e.g. -5" step="any" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="qaC">Coefficient c</label>
+              <input type="number" class="form-control" id="qaC" placeholder="e.g. 6" step="any" />
+            </div>
+          </div>
+          <div class="form-inline">
+            <button class="btn btn-primary" id="qaBtn">Solve</button>
+            <button class="btn btn-ghost" id="qaReset">Clear</button>
+          </div>
+          <div class="result-area" id="qaResult"></div>
+          <div class="error-msg" id="qaError" role="alert"></div>
+        </div>
+
+        <div class="calc-tab-panel" id="alg-simplify">
+          <p class="form-hint" style="margin-bottom: 1rem;">Evaluate or simplify a numeric expression using standard order of operations (PEMDAS: Parentheses, Exponents, Multiply, Divide, Add, Subtract).</p>
+          <div class="form-group">
+            <label class="form-label" for="simpExpr">Expression</label>
+            <input type="text" class="form-control" id="simpExpr" placeholder="e.g. 2*(3+4)^2 - 10/2" />
+          </div>
+          <div class="form-inline">
+            <button class="btn btn-primary" id="simpExprBtn">Evaluate</button>
+            <button class="btn btn-ghost" id="simpExprReset">Clear</button>
+          </div>
+          <div class="result-area" id="simpExprResult"></div>
+          <div class="error-msg" id="simpExprError" role="alert"></div>
+        </div>
+      </div>
+
+      <section class="content-section">
+        <h2>What Is Algebra?</h2>
+        <p>Algebra is the branch of mathematics in which letters and symbols represent numbers and quantities in equations and formulas. Instead of working with known numbers alone, algebra lets you manipulate unknown quantities — typically represented by letters like <em>x</em>, <em>y</em> or <em>z</em> — to find their values. The core skill of algebra is <strong>solving equations</strong>: using balanced operations to isolate the unknown on one side of the equals sign.</p>
+        <p>A <strong>linear equation</strong> is one where the highest power of the variable is 1 (e.g., 3x + 7 = 22). A <strong>quadratic equation</strong> has a variable raised to the power 2 (e.g., x² − 5x + 6 = 0). Linear equations have exactly one solution; quadratic equations have two (which may be real, repeated or complex).</p>
+      </section>
+
+      <section class="content-section">
+        <h2>How the Calculator Works</h2>
+        <p>For linear equations of the form <strong>ax + b = c</strong>, the calculator performs the same steps you would by hand:</p>
+        <ol>
+          <li><strong>Subtract b</strong> from both sides: ax = c − b</li>
+          <li><strong>Divide by a</strong>: x = (c − b) / a</li>
+          <li><strong>Validate</strong>: if a = 0, the equation has no unique solution (either infinitely many or none, depending on c and b).</li>
+        </ol>
+        <p>For quadratic equations, the calculator uses the standard quadratic formula and discriminant, the same method as the dedicated Quadratic Equation Calculator. The expression evaluator applies standard order of operations — parentheses first, then exponents, then multiplication and division (left to right), then addition and subtraction.</p>
+      </section>
+
+      <section class="content-section">
+        <h2>Algebraic Formulas</h2>
+        <div class="formula-box">
+          <div class="formula">Linear: ax + b = c → x = (c − b) / a</div>
+        </div>
+        <div class="formula-box">
+          <div class="formula">Quadratic: x = (−b ± √(b² − 4ac)) / 2a</div>
+        </div>
+        <div class="formula-box">
+          <div class="formula">Distributive: a(b + c) = ab + ac</div>
+        </div>
+        <div class="formula-box">
+          <div class="formula">FOIL: (a + b)(c + d) = ac + ad + bc + bd</div>
+        </div>
+        <div class="formula-legend">
+          <span><code>a, b, c</code> — known coefficients</span>
+          <span><code>x</code> — unknown variable</span>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>Step-by-Step Examples</h2>
+        <div class="example-box">
+          <h4>Example 1: Solving 3x + 7 = 22</h4>
+          <div class="example-step"><strong>Input:</strong> a = 3, b = 7, c = 22</div>
+          <div class="example-step"><strong>Step 1:</strong> Subtract 7 from both sides: 3x = 22 − 7 = 15</div>
+          <div class="example-step"><strong>Step 2:</strong> Divide both sides by 3: x = 15 / 3</div>
+          <div class="example-step"><strong>Result:</strong> x = 5</div>
+        </div>
+        <div class="example-box">
+          <h4>Example 2: Evaluating 2(3 + 4)² − 10 / 2</h4>
+          <div class="example-step"><strong>Parentheses:</strong> (3 + 4) = 7</div>
+          <div class="example-step"><strong>Exponent:</strong> 7² = 49</div>
+          <div class="example-step"><strong>Multiply:</strong> 2 × 49 = 98</div>
+          <div class="example-step"><strong>Divide:</strong> 10 / 2 = 5</div>
+          <div class="example-step"><strong>Subtract:</strong> 98 − 5 = 93</div>
+          <div class="example-step"><strong>Result:</strong> 93</div>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>History of Algebra</h2>
+        <p>The word "algebra" comes from the Arabic <em>al-jabr</em>, a term used in the title of a book written around 820 CE by the Persian mathematician <strong>Muhammad ibn Musa al-Khwarizmi</strong>: <em>Al-Kitab al-mukhtasar fi hisab al-jabr wa'l-muqabala</em> ("The Compendious Book on Calculation by Completion and Balancing"). Al-Khwarizmi's work systematically presented methods for solving linear and quadratic equations. The terms <em>al-jabr</em> ("completion" — moving subtracted terms to the other side) and <em>al-muqabala</em> ("balancing" — subtracting the same quantity from both sides) describe two of the fundamental operations of algebra that we still perform today.</p>
+        <p>Al-Khwarizmi's name was Latinised as "Algoritmi," which is the origin of the English word <strong>algorithm</strong>. His book was translated into Latin in the 12th century and became the primary algebra textbook in European universities for centuries.</p>
+        <p>Before al-Khwarizmi, Greek mathematicians like Diophantus (c. 250 CE) had worked with equations, and Indian mathematicians like Brahmagupta (628 CE) had developed rules for solving quadratics. But al-Khwarizmi was the first to present algebra as a systematic, general discipline independent of specific problems.</p>
+        <p>The use of letters for unknown quantities was pioneered by François Viète in the late 16th century, and the familiar convention of using x for the unknown was popularised by René Descartes in his <em>La Géométrie</em> (1637).</p>
+      </section>
+
+      <section class="content-section">
+        <h2>Where Algebra Is Used</h2>
+        <ul>
+          <li><strong>Education:</strong> Foundation for all higher mathematics, physics and engineering.</li>
+          <li><strong>Computer science:</strong> Algorithm design, complexity analysis and cryptography.</li>
+          <li><strong>Economics:</strong> Supply and demand models, equilibrium calculations and optimisation.</li>
+          <li><strong>Engineering:</strong> Circuit analysis, structural calculations and control systems.</li>
+          <li><strong>Everyday life:</strong> Budgeting, unit pricing and any "find the unknown" problem.</li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <h3>Advantages</h3>
+        <ul>
+          <li>Algebra provides a general framework for solving problems with unknown quantities.</li>
+          <li>Once an equation is set up, the solution process is mechanical and can be automated.</li>
+          <li>Algebraic manipulation skills transfer to calculus, physics and computer science.</li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <h3>Limitations</h3>
+        <ul>
+          <li>This calculator handles linear and quadratic equations; higher-degree polynomials require different methods.</li>
+          <li>The expression evaluator works with numbers, not symbolic variables — it cannot simplify <code>2x + 3x</code> to <code>5x</code>.</li>
+          <li>Simultaneous equations (systems with multiple variables) require matrix methods or substitution, not handled here.</li>
+        </ul>
+      </section>
+
+      <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">What is the difference between an expression and an equation? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">An expression is a combination of numbers and variables without an equals sign, like 2x + 3. An equation includes an equals sign and states that two expressions are equal, like 2x + 3 = 11. Expressions can be evaluated or simplified; equations can be solved for the unknown.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Why do we do the same operation to both sides of an equation? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">An equation is a balance — the two sides are equal. If you add, subtract, multiply or divide both sides by the same amount, the balance is preserved and the equation remains true. This principle is the foundation of all equation solving: you isolate the unknown by performing the inverse of each operation on both sides.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">What does a = 0 mean in a linear equation? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">If a = 0, the equation becomes 0x + b = c, which means b = c. If b and c are actually equal, the equation is true for any x (infinitely many solutions). If b and c are not equal, there is no solution. Either way, the equation is no longer really about x.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">What is PEMDAS and why does it matter? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">PEMDAS stands for Parentheses, Exponents, Multiplication, Division, Addition, Subtraction — the order in which operations should be performed. Without a standard order, an expression like 2 + 3 × 4 could be interpreted as either 20 or 14. PEMDAS ensures everyone gets the same answer: 14, because multiplication is performed before addition.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Can this calculator solve systems of equations? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Not directly — this calculator handles one equation at a time. For systems of linear equations with multiple variables, the Matrix Calculator can solve them using matrix inversion. You can also solve simple systems by hand using substitution or elimination, then verify each step here.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">How is algebra different from arithmetic? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Arithmetic works with specific numbers — addition, subtraction, multiplication and division of known values. Algebra generalises this by introducing variables (letters representing unknown or changing quantities) and the rules for manipulating them. Algebra lets you express general relationships and solve for unknowns, while arithmetic computes specific results.</div></div>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>Related Calculators</h2>
+        <div class="related-grid">
+          <a href="/pages/quadratic-equation-calculator.html" class="related-card"><span class="icon">x²</span><span class="name">Quadratic Equation</span></a>
+          <a href="/pages/scientific-calculator.html" class="related-card"><span class="icon">🧮</span><span class="name">Scientific Calculator</span></a>
+          <a href="/pages/fraction-calculator.html" class="related-card"><span class="icon">½</span><span class="name">Fraction Calculator</span></a>
+          <a href="/pages/matrix-calculator.html" class="related-card"><span class="icon">⊞</span><span class="name">Matrix Calculator</span></a>
+          <a href="/pages/exponent-power-calculator.html" class="related-card"><span class="icon">aᵇ</span><span class="name">Exponent &amp; Power</span></a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo"><span class="logo-icon">∑</span> CalcVerse</a>
+          <p>Thirty free, fast and accurate online calculators with clear explanations, worked examples and history.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Math</h4>
+          <ul>
+            <li><a href="/pages/scientific-calculator.html">Scientific</a></li>
+            <li><a href="/pages/fraction-calculator.html">Fractions</a></li>
+            <li><a href="/pages/quadratic-equation-calculator.html">Quadratic</a></li>
+            <li><a href="/pages/trigonometry-calculator.html">Trigonometry</a></li>
+            <li><a href="/pages/logarithm-calculator.html">Logarithms</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Finance</h4>
+          <ul>
+            <li><a href="/pages/compound-interest-calculator.html">Compound Interest</a></li>
+            <li><a href="/pages/simple-interest-calculator.html">Simple Interest</a></li>
+            <li><a href="/pages/loan-payment-calculator.html">Loan Payment</a></li>
+            <li><a href="/pages/bmi-calculator.html">BMI</a></li>
+            <li><a href="/pages/gpa-calculator.html">GPA</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Everyday</h4>
+          <ul>
+            <li><a href="/pages/percentage-calculator.html">Percentage</a></li>
+            <li><a href="/pages/age-calculator.html">Age</a></li>
+            <li><a href="/pages/date-difference-calculator.html">Date Difference</a></li>
+            <li><a href="/pages/time-calculator.html">Time</a></li>
+            <li><a href="/pages/unit-converter.html">Unit Converter</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 CalcVerse. Free for everyone.</span>
+        <span>Built with HTML, CSS and vanilla JavaScript.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/algebra.js"></script>
+</body>
+</html>

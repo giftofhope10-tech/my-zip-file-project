@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matrix Calculator — Add, Multiply, Determinant & Inverse | CalcVerse</title>
+  <meta name="description" content="Free online matrix calculator for addition, subtraction, multiplication, transpose, determinant and inverse of 2×2 and 3×3 matrices with step-by-step working." />
+  <link rel="canonical" href="https://calcverse.app/pages/matrix-calculator.html" />
+  <meta property="og:title" content="Matrix Calculator — CalcVerse" />
+  <meta property="og:description" content="Add, subtract, multiply, transpose, find determinant and inverse of matrices." />
+  <meta property="og:type" content="website" />
+  <meta name="keywords" content="matrix calculator, matrix addition, matrix multiplication, determinant calculator, inverse matrix, transpose matrix" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="logo"><span class="logo-icon">∑</span> CalcVerse</a>
+      <nav class="main-nav" id="mainNav">
+        <a href="/">Home</a>
+        <a href="/#all-calculators">Calculators</a>
+        <a href="/#categories">Categories</a>
+        <a href="/#about">About</a>
+      </nav>
+      <div class="header-actions">
+        <div class="search-box">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="searchInput" placeholder="Search calculators…" autocomplete="off" aria-label="Search calculators" />
+          <div class="search-results" id="searchResults"></div>
+        </div>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <div class="content-container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span class="sep">›</span>
+        <a href="/#cat-advanced">Advanced Math</a><span class="sep">›</span>
+        <span>Matrix Calculator</span>
+      </nav>
+
+      <div class="page-header">
+        <h1>Matrix Calculator</h1>
+        <p class="lead">Perform matrix operations including addition, subtraction, multiplication, transpose, determinant and inverse. Enter matrices of up to 3×3 with individual cell input, and the calculator shows each operation with clear results and explanations of the rules involved.</p>
+      </div>
+
+      <div class="calc-card">
+        <div class="calc-title"><span class="icon">⊞</span> Matrix Calculator</div>
+        <div class="calc-tabs">
+          <button class="calc-tab active" data-tab="mat-add">A + B</button>
+          <button class="calc-tab" data-tab="mat-sub">A − B</button>
+          <button class="calc-tab" data-tab="mat-mul">A × B</button>
+          <button class="calc-tab" data-tab="mat-trans">Transpose</button>
+          <button class="calc-tab" data-tab="mat-det">Determinant</button>
+          <button class="calc-tab" data-tab="mat-inv">Inverse</button>
+        </div>
+
+        <!-- Matrix A -->
+        <div id="matASection">
+          <h4 style="margin-bottom: 0.5rem;">Matrix A</h4>
+          <div class="form-inline" style="margin-bottom: 1rem;">
+            <div class="form-group">
+              <label class="form-label" for="matARows">Rows</label>
+              <select class="form-control" id="matARows"><option value="2">2</option><option value="3">3</option></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="matACols">Columns</label>
+              <select class="form-control" id="matACols"><option value="2">2</option><option value="3">3</option></select>
+            </div>
+            <div class="form-group"><button class="btn btn-outline btn-sm" id="matABuild">Set dimensions</button></div>
+          </div>
+          <div id="matAContainer"></div>
+        </div>
+
+        <!-- Matrix B -->
+        <div id="matBSection" style="margin-top: 1.5rem;">
+          <h4 style="margin-bottom: 0.5rem;">Matrix B</h4>
+          <div class="form-inline" style="margin-bottom: 1rem;">
+            <div class="form-group">
+              <label class="form-label" for="matBRows">Rows</label>
+              <select class="form-control" id="matBRows"><option value="2">2</option><option value="3">3</option></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="matBCols">Columns</label>
+              <select class="form-control" id="matBCols"><option value="2">2</option><option value="3">3</option></select>
+            </div>
+            <div class="form-group"><button class="btn btn-outline btn-sm" id="matBBuild">Set dimensions</button></div>
+          </div>
+          <div id="matBContainer"></div>
+        </div>
+
+        <div style="margin-top: 1.5rem;">
+          <button class="btn btn-primary" id="matCalcBtn">Calculate</button>
+          <button class="btn btn-ghost" id="matReset">Clear</button>
+        </div>
+        <div class="result-area" id="matResult"></div>
+        <div class="error-msg" id="matError" role="alert"></div>
+      </div>
+
+      <section class="content-section">
+        <h2>What Is a Matrix?</h2>
+        <p>A matrix is a rectangular array of numbers arranged in rows and columns. A matrix with <em>m</em> rows and <em>n</em> columns is called an <em>m × n</em> matrix (read "m by n"). Each number in the matrix is called an <strong>element</strong> or <strong>entry</strong>, identified by its row and column position (e.g., <em>a₂₃</em> is the element in row 2, column 3).</p>
+        <p>Matrices are the central object of <strong>linear algebra</strong>. They are used to represent systems of linear equations, linear transformations (rotations, reflections, scalings in computer graphics), data in statistics, networks in graph theory, and quantum states in physics. Understanding matrix operations is essential for fields from machine learning to structural engineering.</p>
+      </section>
+
+      <section class="content-section">
+        <h2>How the Calculator Works</h2>
+        <p>The calculator builds two matrices from your cell inputs, validates their dimensions for the selected operation, then computes the result:</p>
+        <ul>
+          <li><strong>Addition and subtraction</strong> — element-by-element; both matrices must have the same dimensions.</li>
+          <li><strong>Multiplication</strong> — the number of columns in A must equal the number of rows in B. The result has dimensions (rows of A) × (columns of B).</li>
+          <li><strong>Transpose</strong> — rows become columns and vice versa; operates on Matrix A only.</li>
+          <li><strong>Determinant</strong> — only defined for square matrices; computed by cofactor expansion for 2×2 or 3×3.</li>
+          <li><strong>Inverse</strong> — only defined for square matrices with non-zero determinant; computed using the adjugate and determinant.</li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <h2>Matrix Formulas and Rules</h2>
+        <div class="formula-box">
+          <div class="formula">A + B: (A+B)ᵢⱼ = aᵢⱼ + bᵢⱼ (same dimensions required)</div>
+        </div>
+        <div class="formula-box">
+          <div class="formula">(A×B)ᵢⱼ = Σ(aᵢₖ × bₖⱼ) for k = 1 to n</div>
+        </div>
+        <div class="formula-box">
+          <div class="formula">det(2×2) = ad − bc</div>
+        </div>
+        <div class="formula-box">
+          <div class="formula">A⁻¹ = (1/det(A)) × adj(A)</div>
+        </div>
+        <div class="formula-legend">
+          <span><code>A, B</code> — matrices</span>
+          <span><code>det</code> — determinant</span>
+          <span><code>adj</code> — adjugate (transpose of cofactor matrix)</span>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>Step-by-Step Examples</h2>
+        <div class="example-box">
+          <h4>Example 1: Matrix addition</h4>
+          <div class="example-step"><strong>Matrix A:</strong> [1, 2; 3, 4]</div>
+          <div class="example-step"><strong>Matrix B:</strong> [5, 6; 7, 8]</div>
+          <div class="example-step"><strong>Rule:</strong> Add corresponding elements.</div>
+          <div class="example-step"><strong>Result:</strong> [1+5, 2+6; 3+7, 4+8] = [6, 8; 10, 12]</div>
+        </div>
+        <div class="example-box">
+          <h4>Example 2: 2×2 determinant</h4>
+          <div class="example-step"><strong>Matrix:</strong> [4, 7; 2, 6]</div>
+          <div class="example-step"><strong>Formula:</strong> det = ad − bc = (4)(6) − (7)(2)</div>
+          <div class="example-step"><strong>Calculation:</strong> 24 − 14 = 10</div>
+          <div class="example-step"><strong>Result:</strong> det = 10</div>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>History of Matrix Theory</h2>
+        <p>Matrices were introduced as a formal mathematical object in the 19th century, though the ideas behind them are much older. Ancient Chinese mathematicians solved systems of linear equations using methods equivalent to Gaussian elimination as early as the Han dynasty (c. 200 BCE — 200 CE), as recorded in the <em>Nine Chapters on the Mathematical Art</em>.</p>
+        <p>The modern theory of matrices was developed independently by the British mathematicians <strong>Arthur Cayley</strong> and <strong>James Joseph Sylvester</strong> in the 1850s. Cayley's 1858 <em>A Memoir on the Theory of Matrices</em> established matrix algebra as a distinct branch of mathematics, defining matrix multiplication, the identity matrix, and the inverse. Sylvester coined the term "matrix" (from the Latin for "womb"), because he saw matrices as objects from which determinants could be "born."</p>
+        <p>The determinant, a scalar value derived from a square matrix, was studied earlier — by the Japanese mathematician Seki Takakazu in 1683 and the German mathematician Gottfried Leibniz in 1693, both independently. The determinant provides crucial information about a matrix: whether it has an inverse, whether a system of equations has a unique solution, and the scaling factor of the linear transformation the matrix represents.</p>
+      </section>
+
+      <section class="content-section">
+        <h2>Where Matrices Are Used</h2>
+        <ul>
+          <li><strong>Computer graphics:</strong> 3D transformations — rotation, scaling, translation — are all matrix operations.</li>
+          <li><strong>Machine learning:</strong> Neural networks are essentially chains of matrix multiplications.</li>
+          <li><strong>Physics:</strong> Quantum mechanics uses matrices to represent observables and state transformations.</li>
+          <li><strong>Economics:</strong> Input-output models and linear programming.</li>
+          <li><strong>Engineering:</strong> Structural analysis, circuit theory and control systems all rely on matrix equations.</li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <h3>Advantages</h3>
+        <ul>
+          <li>Matrices compactly represent and manipulate large systems of equations.</li>
+          <li>Matrix operations are highly parallelisable, making them ideal for GPU computation.</li>
+          <li>The determinant and inverse provide essential information about solvability and stability.</li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <h3>Limitations</h3>
+        <ul>
+          <li>Matrix multiplication is not commutative: A × B ≠ B × A in general.</li>
+          <li>Not all matrices have inverses — only square matrices with non-zero determinant do.</li>
+          <li>Large matrices can be computationally expensive, especially for determinant and inverse.</li>
+        </ul>
+      </section>
+
+      <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">What is the difference between matrix multiplication and element-wise multiplication? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Matrix multiplication (A×B) combines rows of A with columns of B to produce a new matrix. Element-wise multiplication (the Hadamard product) multiplies corresponding entries: (A∘B)ᵢⱼ = aᵢⱼ × bᵢⱼ. Matrix multiplication is the standard operation in linear algebra; element-wise multiplication is used in specific applications like neural network backpropagation.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Why must the number of columns in A equal the number of rows in B for multiplication? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Each element of the product is computed by taking the dot product of a row of A with a column of B. A row of A has as many elements as A has columns, and a column of B has as many elements as B has rows. For the dot product to be defined, these must be equal — hence A's columns must equal B's rows.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">What does it mean if the determinant is zero? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">A determinant of zero means the matrix is <em>singular</em> — it does not have an inverse. Geometrically, the linear transformation it represents collapses space into a lower dimension (for example, flattening a 2D area into a line or a point). In equation solving, a zero determinant means the system either has no solution or infinitely many solutions.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">How is the inverse of a matrix calculated? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">For a 2×2 matrix [a, b; c, d], the inverse is (1/det) × [d, −b; −c, a]. For larger matrices, the inverse is (1/det) × adjugate, where the adjugate is the transpose of the cofactor matrix. The calculator uses this method for 3×3 matrices. If the determinant is zero, no inverse exists.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Is matrix multiplication commutative? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">No. In general, A × B ≠ B × A. The order matters because each row of the left matrix is paired with each column of the right matrix. This is why matrix multiplication is defined with a specific left-to-right order and why transformation sequences in computer graphics must be applied in the correct order.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">What is the transpose of a matrix? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">The transpose of a matrix flips it over its diagonal, switching rows with columns. The element at position (i, j) moves to position (j, i). A 2×3 matrix becomes a 3×2 matrix when transposed. The transpose is used in many applications, including solving least-squares problems and defining symmetric and orthogonal matrices.</div></div>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>Related Calculators</h2>
+        <div class="related-grid">
+          <a href="/pages/algebra-calculator.html" class="related-card"><span class="icon">𝑥</span><span class="name">Algebra Calculator</span></a>
+          <a href="/pages/quadratic-equation-calculator.html" class="related-card"><span class="icon">x²</span><span class="name">Quadratic Equation</span></a>
+          <a href="/pages/permutation-combination-calculator.html" class="related-card"><span class="icon">nCr</span><span class="name">Permutation &amp; Combination</span></a>
+          <a href="/pages/statistics-calculator.html" class="related-card"><span class="icon">📊</span><span class="name">Statistics Calculator</span></a>
+          <a href="/pages/scientific-calculator.html" class="related-card"><span class="icon">🧮</span><span class="name">Scientific Calculator</span></a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo"><span class="logo-icon">∑</span> CalcVerse</a>
+          <p>Thirty free, fast and accurate online calculators with clear explanations, worked examples and history.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Math</h4>
+          <ul>
+            <li><a href="/pages/scientific-calculator.html">Scientific</a></li>
+            <li><a href="/pages/fraction-calculator.html">Fractions</a></li>
+            <li><a href="/pages/quadratic-equation-calculator.html">Quadratic</a></li>
+            <li><a href="/pages/trigonometry-calculator.html">Trigonometry</a></li>
+            <li><a href="/pages/logarithm-calculator.html">Logarithms</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Finance</h4>
+          <ul>
+            <li><a href="/pages/compound-interest-calculator.html">Compound Interest</a></li>
+            <li><a href="/pages/simple-interest-calculator.html">Simple Interest</a></li>
+            <li><a href="/pages/loan-payment-calculator.html">Loan Payment</a></li>
+            <li><a href="/pages/bmi-calculator.html">BMI</a></li>
+            <li><a href="/pages/gpa-calculator.html">GPA</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Everyday</h4>
+          <ul>
+            <li><a href="/pages/percentage-calculator.html">Percentage</a></li>
+            <li><a href="/pages/age-calculator.html">Age</a></li>
+            <li><a href="/pages/date-difference-calculator.html">Date Difference</a></li>
+            <li><a href="/pages/time-calculator.html">Time</a></li>
+            <li><a href="/pages/unit-converter.html">Unit Converter</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 CalcVerse. Free for everyone.</span>
+        <span>Built with HTML, CSS and vanilla JavaScript.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/matrix.js"></script>
+</body>
+</html>

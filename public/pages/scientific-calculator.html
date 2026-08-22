@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scientific Calculator — Free Online Calc with Trig, Logs & Memory | CalcVerse</title>
+  <meta name="description" content="Free online scientific calculator with trigonometric functions, logarithms, powers, roots, factorial, constants, DEG/RAD modes, memory and calculation history." />
+  <link rel="canonical" href="https://calcverse.app/pages/scientific-calculator.html" />
+  <meta property="og:title" content="Scientific Calculator — CalcVerse" />
+  <meta property="og:description" content="Full scientific calculator with trig, logs, powers, memory and history." />
+  <meta property="og:type" content="website" />
+  <meta name="keywords" content="scientific calculator, online scientific calculator, trigonometry calculator, log calculator, math calculator" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="logo"><span class="logo-icon">∑</span> CalcVerse</a>
+      <nav class="main-nav" id="mainNav">
+        <a href="/">Home</a>
+        <a href="/#all-calculators">Calculators</a>
+        <a href="/#categories">Categories</a>
+        <a href="/#about">About</a>
+      </nav>
+      <div class="header-actions">
+        <div class="search-box">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="searchInput" placeholder="Search calculators…" autocomplete="off" aria-label="Search calculators" />
+          <div class="search-results" id="searchResults"></div>
+        </div>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <div class="content-container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span class="sep">›</span>
+        <a href="/#cat-math">Math &amp; Algebra</a><span class="sep">›</span>
+        <span>Scientific Calculator</span>
+      </nav>
+
+      <div class="page-header">
+        <h1>Scientific Calculator</h1>
+        <p class="lead">A full-featured scientific calculator in your browser — trigonometric functions, logarithms, powers, roots, factorial, constants π and e, degree/radian modes, parentheses, memory and a running history of your calculations.</p>
+      </div>
+
+      <div class="calc-card">
+        <div class="calc-title"><span class="icon">🧮</span> Scientific Calculator</div>
+        <div class="sci-calc">
+          <div class="sci-display" id="sciDisplay">
+            <div class="mode-indicator" id="sciModeIndicator">DEG | M: 0</div>
+            <div class="expr" id="sciExpr">&nbsp;</div>
+            <div class="result" id="sciResult">0</div>
+          </div>
+          <div class="sci-keypad" id="sciKeypad"></div>
+          <div class="sci-history" id="sciHistory"></div>
+        </div>
+        <div class="error-msg" id="sciError" role="alert"></div>
+      </div>
+
+      <section class="content-section">
+        <h2>What Is a Scientific Calculator?</h2>
+        <p>A scientific calculator is a calculator designed to handle operations beyond basic arithmetic — trigonometric functions (sine, cosine, tangent and their inverses), logarithms (base 10 and natural), exponentials, powers and roots, factorials, constants such as π and e, and the use of parentheses to control the order of operations. Unlike a basic four-function calculator, a scientific calculator understands mathematical precedence and lets you build up complex expressions before evaluating them.</p>
+        <p>This online scientific calculator runs entirely in your browser using JavaScript. It evaluates expressions with the same operator precedence you would use on paper, supports both degree and radian modes for trigonometric functions, and keeps a history of your previous calculations so you can review or reuse them.</p>
+      </section>
+
+      <section class="content-section">
+        <h2>How the Calculator Works</h2>
+        <p>When you press the equals button, the calculator takes the expression you have built up and evaluates it in several stages:</p>
+        <ol>
+          <li><strong>Tokenising</strong> — the expression string is broken into numbers, operators, function names and parentheses.</li>
+          <li><strong>Substitution</strong> — function names like <code>sin</code>, <code>cos</code>, <code>log</code> and <code>ln</code> are replaced with their JavaScript equivalents, adjusted for the current angle mode (degrees or radians).</li>
+          <li><strong>Constant insertion</strong> — the symbols π and e are replaced with their numeric values.</li>
+          <li><strong>Evaluation</strong> — the cleaned expression is evaluated using JavaScript's built-in arithmetic engine, which respects standard operator precedence (parentheses first, then powers, then multiplication and division, then addition and subtraction).</li>
+          <li><strong>Formatting</strong> — the result is rounded to avoid floating-point artefacts and displayed. If the result is too large or too small, it is shown in scientific notation.</li>
+        </ol>
+        <p>Memory functions (M+, M−, MR, MC) let you store a value, add to or subtract from the stored value, recall it, and clear it. The mode indicator shows whether the calculator is in degree or radian mode and the current memory value.</p>
+      </section>
+
+      <section class="content-section">
+        <h2>Key Functions and Formulas</h2>
+        <div class="formula-box">
+          <div class="formula">sin(x), cos(x), tan(x) — trigonometric functions</div>
+        </div>
+        <div class="formula-box">
+          <div class="formula">sin⁻¹(x), cos⁻¹(x), tan⁻¹(x) — inverse trigonometric functions</div>
+        </div>
+        <div class="formula-box">
+          <div class="formula">log(x) = log₁₀(x), &nbsp; ln(x) = logₑ(x)</div>
+        </div>
+        <div class="formula-box">
+          <div class="formula">n! = n × (n−1) × (n−2) × … × 1</div>
+        </div>
+        <div class="formula-box">
+          <div class="formula">π ≈ 3.141592653589793, &nbsp; e ≈ 2.718281828459045</div>
+        </div>
+        <div class="formula-legend">
+          <span><code>π</code> — ratio of circumference to diameter</span>
+          <span><code>e</code> — base of natural logarithms</span>
+          <span><code>DEG</code> — degree mode</span>
+          <span><code>RAD</code> — radian mode</span>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>Step-by-Step Examples</h2>
+        <div class="example-box">
+          <h4>Example 1: Trigonometric calculation in degrees</h4>
+          <div class="example-step"><strong>Input:</strong> sin(30) + cos(60), in DEG mode</div>
+          <div class="example-step"><strong>Substitution:</strong> sin(30°) = 0.5, cos(60°) = 0.5</div>
+          <div class="example-step"><strong>Calculation:</strong> 0.5 + 0.5 = 1.0</div>
+          <div class="example-step"><strong>Result:</strong> 1</div>
+        </div>
+        <div class="example-box">
+          <h4>Example 2: Using logarithms and powers</h4>
+          <div class="example-step"><strong>Input:</strong> log(1000) + 2^5</div>
+          <div class="example-step"><strong>Substitution:</strong> log₁₀(1000) = 3, 2⁵ = 32</div>
+          <div class="example-step"><strong>Calculation:</strong> 3 + 32 = 35</div>
+          <div class="example-step"><strong>Result:</strong> 35</div>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>History of Scientific Calculators</h2>
+        <p>The history of scientific calculators stretches from mechanical adding machines to the pocket-sized electronic devices of the 1970s and on to the software calculators that run on every smartphone today.</p>
+        <p>The earliest mechanical calculator was built by Blaise Pascal in 1642 — the Pascaline, which could add and subtract. Gottfried Wilhelm Leibniz improved on this in 1673 with his Stepped Reckoner, which could also multiply and divide. These machines were large, expensive and limited to arithmetic.</p>
+        <p>The first true scientific calculator was the Hewlett-Packard HP-35, introduced in 1972. It was the first handheld calculator capable of trigonometric and logarithmic functions, and it replaced the slide rule for an entire generation of engineers. It used Reverse Polish Notation (RPN), a system that eliminated the need for parentheses by placing operators after their operands.</p>
+        <p>Throughout the 1970s and 1980s, scientific calculators became smaller, cheaper and more capable. Texas Instruments introduced the TI-30 series in 1976, making scientific calculation affordable for students. Graphing calculators appeared in the late 1980s, led by Casio's fx-7000G (1985).</p>
+        <p>Today, software calculators on computers and phones can match or exceed the functionality of any hardware scientific calculator, with the added benefit of a larger display, calculation history and copy-paste support.</p>
+      </section>
+
+      <section class="content-section">
+        <h2>Where Scientific Calculators Are Used</h2>
+        <ul>
+          <li><strong>Education:</strong> Secondary school and university mathematics, physics, chemistry and engineering courses.</li>
+          <li><strong>Engineering:</strong> Circuit design, structural analysis, signal processing and control systems.</li>
+          <li><strong>Physics:</strong> Wave calculations, quantum mechanics formulas and kinematic equations.</li>
+          <li><strong>Finance:</strong> Bond yield calculations, exponential growth models and logarithmic transformations.</li>
+          <li><strong>Everyday problem-solving:</strong> Any calculation involving powers, roots, trigonometry or logarithms.</li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <h3>Advantages</h3>
+        <ul>
+          <li>Handles complex expressions with proper operator precedence.</li>
+          <li>Supports both degree and radian angle modes for flexibility.</li>
+          <li>Memory functions allow intermediate results to be stored and reused.</li>
+          <li>Calculation history lets you review and reuse previous results.</li>
+          <li>Constants π and e are built in, avoiding manual entry of long decimal values.</li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <h3>Limitations</h3>
+        <ul>
+          <li>Floating-point arithmetic can produce tiny rounding errors in edge cases (e.g., sin(π) returning a very small number instead of exactly zero).</li>
+          <li>Factorial is limited to non-negative integers and very large values will overflow to Infinity.</li>
+          <li>The calculator does not support symbolic algebra — it evaluates numerically, not symbolically.</li>
+          <li>Inverse trigonometric functions return principal values only.</li>
+        </ul>
+      </section>
+
+      <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">How do I switch between degrees and radians? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Press the DEG/RAD toggle button. The mode indicator at the top of the display will show which mode is active. Trigonometric functions interpret their input according to the current mode, and inverse trigonometric functions return results in the current mode.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">What is the difference between log and ln? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">The <code>log</code> button computes the base-10 logarithm (log₁₀), which is the common logarithm used in science for pH, decibels and the Richter scale. The <code>ln</code> button computes the natural logarithm (logₑ), which uses Euler's number e ≈ 2.71828 as the base and appears throughout calculus and continuous growth models.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">How do the memory functions work? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">M+ adds the current result to memory, M− subtracts it, MR recalls the stored value into the display, and MC clears memory to zero. The mode indicator shows the current memory value so you always know what is stored.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Why does sin(180) not equal exactly zero in degree mode? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">JavaScript uses floating-point arithmetic, which cannot represent π exactly. When the calculator converts 180 degrees to radians and computes the sine, a tiny rounding error can produce a result like 1.22 × 10⁻¹⁶ instead of exactly zero. This is a normal feature of floating-point computation, not a bug.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Can I use parentheses in my expressions? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Yes. Parentheses are fully supported and follow standard mathematical precedence. You can nest them as deeply as you need. For example, <code>(2 + 3) × (4 − 1)</code> evaluates to 15, not 5, because the parenthesised groups are evaluated first.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Is there a keyboard shortcut for the equals button? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Yes — pressing the Enter key on your keyboard triggers the equals function, the Escape key clears the display, and the Backspace key removes the last character. Number keys and operator keys also work directly from your keyboard.</div></div>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>Related Calculators</h2>
+        <div class="related-grid">
+          <a href="/pages/trigonometry-calculator.html" class="related-card"><span class="icon">sin</span><span class="name">Trigonometry Calculator</span></a>
+          <a href="/pages/logarithm-calculator.html" class="related-card"><span class="icon">log</span><span class="name">Logarithm Calculator</span></a>
+          <a href="/pages/exponent-power-calculator.html" class="related-card"><span class="icon">aᵇ</span><span class="name">Exponent &amp; Power Calculator</span></a>
+          <a href="/pages/factorial-calculator.html" class="related-card"><span class="icon">n!</span><span class="name">Factorial Calculator</span></a>
+          <a href="/pages/percentage-calculator.html" class="related-card"><span class="icon">％</span><span class="name">Percentage Calculator</span></a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo"><span class="logo-icon">∑</span> CalcVerse</a>
+          <p>Thirty free, fast and accurate online calculators with clear explanations, worked examples and history.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Math</h4>
+          <ul>
+            <li><a href="/pages/scientific-calculator.html">Scientific</a></li>
+            <li><a href="/pages/fraction-calculator.html">Fractions</a></li>
+            <li><a href="/pages/quadratic-equation-calculator.html">Quadratic</a></li>
+            <li><a href="/pages/trigonometry-calculator.html">Trigonometry</a></li>
+            <li><a href="/pages/logarithm-calculator.html">Logarithms</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Finance</h4>
+          <ul>
+            <li><a href="/pages/compound-interest-calculator.html">Compound Interest</a></li>
+            <li><a href="/pages/simple-interest-calculator.html">Simple Interest</a></li>
+            <li><a href="/pages/loan-payment-calculator.html">Loan Payment</a></li>
+            <li><a href="/pages/bmi-calculator.html">BMI</a></li>
+            <li><a href="/pages/gpa-calculator.html">GPA</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Everyday</h4>
+          <ul>
+            <li><a href="/pages/percentage-calculator.html">Percentage</a></li>
+            <li><a href="/pages/age-calculator.html">Age</a></li>
+            <li><a href="/pages/date-difference-calculator.html">Date Difference</a></li>
+            <li><a href="/pages/time-calculator.html">Time</a></li>
+            <li><a href="/pages/unit-converter.html">Unit Converter</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 CalcVerse. Free for everyone.</span>
+        <span>Built with HTML, CSS and vanilla JavaScript.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/scientific.js"></script>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quadratic Equation Calculator — Solve ax² + bx + c = 0 | CalcVerse</title>
+  <meta name="description" content="Solve quadratic equations ax² + bx + c = 0 using the quadratic formula. Get real roots, repeated roots or complex roots with full step-by-step working and discriminant analysis." />
+  <link rel="canonical" href="https://calcverse.app/pages/quadratic-equation-calculator.html" />
+  <meta property="og:title" content="Quadratic Equation Calculator — CalcVerse" />
+  <meta property="og:description" content="Solve quadratic equations with the quadratic formula. Real and complex roots." />
+  <meta property="og:type" content="website" />
+  <meta name="keywords" content="quadratic equation calculator, quadratic formula, discriminant, solve ax2+bx+c, roots of quadratic" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="logo"><span class="logo-icon">∑</span> CalcVerse</a>
+      <nav class="main-nav" id="mainNav">
+        <a href="/">Home</a>
+        <a href="/#all-calculators">Calculators</a>
+        <a href="/#categories">Categories</a>
+        <a href="/#about">About</a>
+      </nav>
+      <div class="header-actions">
+        <div class="search-box">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="searchInput" placeholder="Search calculators…" autocomplete="off" aria-label="Search calculators" />
+          <div class="search-results" id="searchResults"></div>
+        </div>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <div class="content-container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span class="sep">›</span>
+        <a href="/#cat-math">Math &amp; Algebra</a><span class="sep">›</span>
+        <span>Quadratic Equation Calculator</span>
+      </nav>
+
+      <div class="page-header">
+        <h1>Quadratic Equation Calculator</h1>
+        <p class="lead">Solve any quadratic equation of the form ax² + bx + c = 0 in seconds. The calculator applies the quadratic formula, analyses the discriminant to determine the nature of the roots, and shows every step of the working — whether the answer is two real roots, one repeated root, or a pair of complex conjugate roots.</p>
+      </div>
+
+      <div class="calc-card">
+        <div class="calc-title"><span class="icon">x²</span> Solve ax² + bx + c = 0</div>
+        <div class="form-row-3">
+          <div class="form-group">
+            <label class="form-label" for="quadA">Coefficient a</label>
+            <input type="number" class="form-control" id="quadA" placeholder="e.g. 1" step="any" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="quadB">Coefficient b</label>
+            <input type="number" class="form-control" id="quadB" placeholder="e.g. -5" step="any" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="quadC">Coefficient c</label>
+            <input type="number" class="form-control" id="quadC" placeholder="e.g. 6" step="any" />
+          </div>
+        </div>
+        <div class="form-inline">
+          <button class="btn btn-primary" id="quadBtn">Solve</button>
+          <button class="btn btn-ghost" id="quadReset">Clear</button>
+        </div>
+        <div class="result-area" id="quadResult"></div>
+        <div class="error-msg" id="quadError" role="alert"></div>
+      </div>
+
+      <section class="content-section">
+        <h2>What Is a Quadratic Equation?</h2>
+        <p>A quadratic equation is a second-degree polynomial equation in one variable, written in the standard form <strong>ax² + bx + c = 0</strong>, where <em>a</em>, <em>b</em> and <em>c</em> are real numbers and <em>a ≠ 0</em>. The highest power of the variable is 2, which is what makes it "quadratic" (from the Latin <em>quadratus</em>, meaning "square").</p>
+        <p>The solutions to a quadratic equation are called <strong>roots</strong>. A quadratic equation always has exactly two roots (counting multiplicity), which can be two distinct real numbers, one repeated real number, or a pair of complex conjugate numbers. The nature of the roots is determined by the <strong>discriminant</strong>, Δ = b² − 4ac.</p>
+      </section>
+
+      <section class="content-section">
+        <h2>How the Calculator Works</h2>
+        <p>When you enter the three coefficients and press Solve, the calculator performs the following steps:</p>
+        <ol>
+          <li><strong>Validation</strong> — it checks that all three coefficients are valid numbers and that <em>a</em> is not zero (if <em>a</em> were zero, the equation would be linear, not quadratic).</li>
+          <li><strong>Discriminant calculation</strong> — it computes Δ = b² − 4ac and uses the sign of the discriminant to determine the nature of the roots.</li>
+          <li><strong>Root calculation</strong> — it applies the quadratic formula: x = (−b ± √Δ) / (2a).</li>
+          <li><strong>Classification</strong> — if Δ > 0, there are two distinct real roots. If Δ = 0, there is one repeated real root. If Δ < 0, the square root of a negative number produces a complex result, and the calculator returns the two complex conjugate roots.</li>
+          <li><strong>Formatting</strong> — results are displayed with the full substitution and calculation shown step by step.</li>
+        </ol>
+      </section>
+
+      <section class="content-section">
+        <h2>The Quadratic Formula</h2>
+        <div class="formula-box">
+          <div class="formula">x = (−b ± √(b² − 4ac)) / 2a</div>
+        </div>
+        <div class="formula-box">
+          <div class="formula">Δ = b² − 4ac</div>
+        </div>
+        <div class="formula-legend">
+          <span><code>a</code> — coefficient of x² (must not be 0)</span>
+          <span><code>b</code> — coefficient of x</span>
+          <span><code>c</code> — constant term</span>
+          <span><code>Δ</code> — discriminant</span>
+        </div>
+        <p>The sign of the discriminant tells us everything about the roots before we even compute them:</p>
+        <ul>
+          <li><strong>Δ > 0:</strong> Two distinct real roots. The parabola crosses the x-axis at two points.</li>
+          <li><strong>Δ = 0:</strong> One repeated real root. The parabola touches the x-axis at exactly one point (its vertex).</li>
+          <li><strong>Δ < 0:</strong> Two complex conjugate roots. The parabola does not cross the x-axis.</li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <h2>Step-by-Step Examples</h2>
+        <div class="example-box">
+          <h4>Example 1: Two real roots — x² − 5x + 6 = 0</h4>
+          <div class="example-step"><strong>Input:</strong> a = 1, b = −5, c = 6</div>
+          <div class="example-step"><strong>Discriminant:</strong> Δ = (−5)² − 4(1)(6) = 25 − 24 = 1</div>
+          <div class="example-step"><strong>Since Δ > 0:</strong> Two distinct real roots</div>
+          <div class="example-step"><strong>Apply formula:</strong> x = (5 ± √1) / 2 = (5 ± 1) / 2</div>
+          <div class="example-step"><strong>Root 1:</strong> x = (5 + 1) / 2 = 3</div>
+          <div class="example-step"><strong>Root 2:</strong> x = (5 − 1) / 2 = 2</div>
+          <div class="example-step"><strong>Result:</strong> x = 3 or x = 2</div>
+        </div>
+        <div class="example-box">
+          <h4>Example 2: Complex roots — x² + 2x + 5 = 0</h4>
+          <div class="example-step"><strong>Input:</strong> a = 1, b = 2, c = 5</div>
+          <div class="example-step"><strong>Discriminant:</strong> Δ = 2² − 4(1)(5) = 4 − 20 = −16</div>
+          <div class="example-step"><strong>Since Δ < 0:</strong> Two complex conjugate roots</div>
+          <div class="example-step"><strong>Apply formula:</strong> x = (−2 ± √(−16)) / 2 = (−2 ± 4i) / 2</div>
+          <div class="example-step"><strong>Root 1:</strong> x = −1 + 2i</div>
+          <div class="example-step"><strong>Root 2:</strong> x = −1 − 2i</div>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>History of Quadratic Equations</h2>
+        <p>The study of quadratic equations spans thousands of years. The earliest known solutions date to ancient Babylon (around 2000 BCE), where clay tablets show methods for solving problems equivalent to quadratic equations. Babylonian mathematicians used a geometric approach, completing the square literally — by rearranging shapes — rather than using algebraic notation.</p>
+        <p>The Greek mathematician Euclid described a geometric method for solving quadratics in his <em>Elements</em> (around 300 BCE). The Indian mathematician Brahmagupta (628 CE) was the first to give an explicit general formula for solving quadratic equations, recognising that <em>a</em> could be negative and that two roots might exist.</p>
+        <p>The word "algebra" itself comes from the title of a book by the Persian mathematician al-Khwarizmi, <em>Al-Kitab al-mukhtasar fi hisab al-jabr wa'l-muqabala</em> ("The Compendious Book on Calculation by Completion and Balancing", c. 820 CE). Al-Khwarizmi's methods for solving quadratic equations were systematic and complete, covering all cases with positive roots. His work was translated into Latin in the 12th century and became the foundation of European algebra.</p>
+        <p>The modern quadratic formula, which works for all cases including negative and complex roots, was made possible by the acceptance of negative numbers and complex numbers in the 16th and 17th centuries. The Italian mathematician Girolamo Cardano published methods for solving cubic and quartic equations in 1545, which implicitly required understanding complex roots of quadratics.</p>
+      </section>
+
+      <section class="content-section">
+        <h2>Where Quadratic Equations Are Used</h2>
+        <ul>
+          <li><strong>Physics:</strong> Projectile motion — the height of a thrown object follows a quadratic equation in time.</li>
+          <li><strong>Engineering:</strong> Beam deflection, antenna design and signal processing.</li>
+          <li><strong>Economics:</strong> Profit optimisation, where revenue and cost functions intersect quadratically.</li>
+          <li><strong>Computer graphics:</strong> Ray tracing and intersection calculations with curved surfaces.</li>
+          <li><strong>Finance:</strong> Break-even analysis and quadratic models for option pricing.</li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <h3>Advantages</h3>
+        <ul>
+          <li>The quadratic formula always works — it handles every case, including complex roots.</li>
+          <li>The discriminant tells you the nature of the roots before computing them.</li>
+          <li>Quadratic models fit many real-world phenomena that have a single maximum or minimum.</li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <h3>Limitations</h3>
+        <ul>
+          <li>Only applies to second-degree equations. Cubic, quartic and higher equations require different methods.</li>
+          <li>Floating-point arithmetic can introduce small rounding errors in the discriminant, especially when Δ is near zero.</li>
+          <li>The quadratic formula can suffer from <em>catastrophic cancellation</em> when subtracting two nearly equal numbers — for numerical stability, an alternative form is sometimes used in computing.</li>
+        </ul>
+      </section>
+
+      <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">What happens when the discriminant is zero? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">When Δ = 0, the equation has exactly one real root (a repeated root). The quadratic formula gives x = −b / (2a) because the ±√0 term vanishes. Geometrically, the parabola touches the x-axis at its vertex but does not cross it.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">What are complex roots and what do they mean? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">When the discriminant is negative, the square root of a negative number introduces the imaginary unit i (where i² = −1). The two roots are complex conjugates: x = (−b ± i√|Δ|) / (2a). Geometrically, this means the parabola does not cross the x-axis. Complex roots are important in engineering, signal processing and control theory.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Why can't a be zero in a quadratic equation? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">If a = 0, the equation becomes bx + c = 0, which is linear, not quadratic. The quadratic formula divides by 2a, which would be division by zero. The calculator will show an error if you enter a = 0 — use the Algebra Calculator for linear equations instead.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Can I solve quadratics by factoring instead? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Yes, when the roots are rational numbers, factoring is often faster. For example, x² − 5x + 6 = (x − 3)(x − 2), giving roots 3 and 2. However, factoring does not work for all quadratics (especially those with irrational or complex roots), while the quadratic formula always works.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">What is completing the square? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Completing the square is an algebraic technique that rewrites ax² + bx + c in the form a(x + d)² + e, which reveals the vertex of the parabola and can be used to derive the quadratic formula. It was originally a geometric method used by ancient mathematicians. The quadratic formula itself is derived by completing the square on the general form ax² + bx + c = 0.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">How do I find the vertex of the parabola? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">The vertex of the parabola y = ax² + bx + c is at x = −b / (2a). The y-coordinate is found by substituting this x-value back into the equation. The vertex is the maximum (if a < 0) or minimum (if a > 0) point of the parabola.</div></div>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>Related Calculators</h2>
+        <div class="related-grid">
+          <a href="/pages/algebra-calculator.html" class="related-card"><span class="icon">𝑥</span><span class="name">Algebra Calculator</span></a>
+          <a href="/pages/scientific-calculator.html" class="related-card"><span class="icon">🧮</span><span class="name">Scientific Calculator</span></a>
+          <a href="/pages/fraction-calculator.html" class="related-card"><span class="icon">½</span><span class="name">Fraction Calculator</span></a>
+          <a href="/pages/exponent-power-calculator.html" class="related-card"><span class="icon">aᵇ</span><span class="name">Exponent &amp; Power</span></a>
+          <a href="/pages/trigonometry-calculator.html" class="related-card"><span class="icon">sin</span><span class="name">Trigonometry</span></a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo"><span class="logo-icon">∑</span> CalcVerse</a>
+          <p>Thirty free, fast and accurate online calculators with clear explanations, worked examples and history.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Math</h4>
+          <ul>
+            <li><a href="/pages/scientific-calculator.html">Scientific</a></li>
+            <li><a href="/pages/fraction-calculator.html">Fractions</a></li>
+            <li><a href="/pages/quadratic-equation-calculator.html">Quadratic</a></li>
+            <li><a href="/pages/trigonometry-calculator.html">Trigonometry</a></li>
+            <li><a href="/pages/logarithm-calculator.html">Logarithms</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Finance</h4>
+          <ul>
+            <li><a href="/pages/compound-interest-calculator.html">Compound Interest</a></li>
+            <li><a href="/pages/simple-interest-calculator.html">Simple Interest</a></li>
+            <li><a href="/pages/loan-payment-calculator.html">Loan Payment</a></li>
+            <li><a href="/pages/bmi-calculator.html">BMI</a></li>
+            <li><a href="/pages/gpa-calculator.html">GPA</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Everyday</h4>
+          <ul>
+            <li><a href="/pages/percentage-calculator.html">Percentage</a></li>
+            <li><a href="/pages/age-calculator.html">Age</a></li>
+            <li><a href="/pages/date-difference-calculator.html">Date Difference</a></li>
+            <li><a href="/pages/time-calculator.html">Time</a></li>
+            <li><a href="/pages/unit-converter.html">Unit Converter</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 CalcVerse. Free for everyone.</span>
+        <span>Built with HTML, CSS and vanilla JavaScript.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/quadratic.js"></script>
+</body>
+</html>

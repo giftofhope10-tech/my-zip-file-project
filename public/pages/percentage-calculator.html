@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Percentage Calculator — Percent Of, Increase, Decrease & Difference | CalcVerse</title>
+  <meta name="description" content="Calculate percentages with ease: find X% of Y, what percentage X is of Y, percentage increase, decrease, difference and original value from a percentage change." />
+  <link rel="canonical" href="https://calcverse.app/pages/percentage-calculator.html" />
+  <meta property="og:title" content="Percentage Calculator — CalcVerse" />
+  <meta property="og:description" content="Calculate percentages, increases, decreases and differences." />
+  <meta property="og:type" content="website" />
+  <meta name="keywords" content="percentage calculator, percent increase, percent decrease, percentage difference, percent of" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="logo"><span class="logo-icon">∑</span> CalcVerse</a>
+      <nav class="main-nav" id="mainNav">
+        <a href="/">Home</a>
+        <a href="/#all-calculators">Calculators</a>
+        <a href="/#categories">Categories</a>
+        <a href="/#about">About</a>
+      </nav>
+      <div class="header-actions">
+        <div class="search-box">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="searchInput" placeholder="Search calculators…" autocomplete="off" aria-label="Search calculators" />
+          <div class="search-results" id="searchResults"></div>
+        </div>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <div class="content-container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span class="sep">›</span>
+        <a href="/#cat-everyday">Everyday &amp; Date</a><span class="sep">›</span>
+        <span>Percentage Calculator</span>
+      </nav>
+
+      <div class="page-header">
+        <h1>Percentage Calculator</h1>
+        <p class="lead">Work out any percentage problem in seconds — find a percentage of a number, calculate increases and decreases, compare two values with percentage difference, or reverse-engineer the original value from a percentage change.</p>
+      </div>
+
+      <div class="calc-card">
+        <div class="calc-title"><span class="icon">％</span> Percentage Calculator</div>
+        <div class="calc-tabs">
+          <button class="calc-tab active" data-tab="pct-of">X% of Y</button>
+          <button class="calc-tab" data-tab="pct-is">X is what % of Y</button>
+          <button class="calc-tab" data-tab="pct-inc">% Increase</button>
+          <button class="calc-tab" data-tab="pct-dec">% Decrease</button>
+          <button class="calc-tab" data-tab="pct-diff">% Difference</button>
+          <button class="calc-tab" data-tab="pct-orig">Original Value</button>
+        </div>
+
+        <!-- X% of Y -->
+        <div class="calc-tab-panel active" id="pct-of">
+          <div class="form-inline">
+            <div class="form-group"><label class="form-label" for="pctOfPct">Percentage</label><input type="number" class="form-control" id="pctOfPct" placeholder="e.g. 15" step="any" /></div>
+            <div class="form-group"><label class="form-label" for="pctOfVal">Of value</label><input type="number" class="form-control" id="pctOfVal" placeholder="e.g. 200" step="any" /></div>
+            <div class="form-group"><button class="btn btn-primary" id="pctOfBtn">Calculate</button> <button class="btn btn-ghost" id="pctOfReset">Clear</button></div>
+          </div>
+          <div class="result-area" id="pctOfResult"></div>
+          <div class="error-msg" id="pctOfError" role="alert"></div>
+        </div>
+
+        <!-- X is what % of Y -->
+        <div class="calc-tab-panel" id="pct-is">
+          <div class="form-inline">
+            <div class="form-group"><label class="form-label" for="pctIsX">Value X</label><input type="number" class="form-control" id="pctIsX" placeholder="e.g. 30" step="any" /></div>
+            <div class="form-group"><label class="form-label" for="pctIsY">Of value Y</label><input type="number" class="form-control" id="pctIsY" placeholder="e.g. 150" step="any" /></div>
+            <div class="form-group"><button class="btn btn-primary" id="pctIsBtn">Calculate</button> <button class="btn btn-ghost" id="pctIsReset">Clear</button></div>
+          </div>
+          <div class="result-area" id="pctIsResult"></div>
+          <div class="error-msg" id="pctIsError" role="alert"></div>
+        </div>
+
+        <!-- % Increase -->
+        <div class="calc-tab-panel" id="pct-inc">
+          <div class="form-inline">
+            <div class="form-group"><label class="form-label" for="pctIncOld">Original value</label><input type="number" class="form-control" id="pctIncOld" placeholder="e.g. 80" step="any" /></div>
+            <div class="form-group"><label class="form-label" for="pctIncNew">New value</label><input type="number" class="form-control" id="pctIncNew" placeholder="e.g. 100" step="any" /></div>
+            <div class="form-group"><button class="btn btn-primary" id="pctIncBtn">Calculate</button> <button class="btn btn-ghost" id="pctIncReset">Clear</button></div>
+          </div>
+          <div class="result-area" id="pctIncResult"></div>
+          <div class="error-msg" id="pctIncError" role="alert"></div>
+        </div>
+
+        <!-- % Decrease -->
+        <div class="calc-tab-panel" id="pct-dec">
+          <div class="form-inline">
+            <div class="form-group"><label class="form-label" for="pctDecOld">Original value</label><input type="number" class="form-control" id="pctDecOld" placeholder="e.g. 100" step="any" /></div>
+            <div class="form-group"><label class="form-label" for="pctDecNew">New value</label><input type="number" class="form-control" id="pctDecNew" placeholder="e.g. 80" step="any" /></div>
+            <div class="form-group"><button class="btn btn-primary" id="pctDecBtn">Calculate</button> <button class="btn btn-ghost" id="pctDecReset">Clear</button></div>
+          </div>
+          <div class="result-area" id="pctDecResult"></div>
+          <div class="error-msg" id="pctDecError" role="alert"></div>
+        </div>
+
+        <!-- % Difference -->
+        <div class="calc-tab-panel" id="pct-diff">
+          <div class="form-inline">
+            <div class="form-group"><label class="form-label" for="pctDiffA">Value A</label><input type="number" class="form-control" id="pctDiffA" placeholder="e.g. 40" step="any" /></div>
+            <div class="form-group"><label class="form-label" for="pctDiffB">Value B</label><input type="number" class="form-control" id="pctDiffB" placeholder="e.g. 60" step="any" /></div>
+            <div class="form-group"><button class="btn btn-primary" id="pctDiffBtn">Calculate</button> <button class="btn btn-ghost" id="pctDiffReset">Clear</button></div>
+          </div>
+          <div class="result-area" id="pctDiffResult"></div>
+          <div class="error-msg" id="pctDiffError" role="alert"></div>
+        </div>
+
+        <!-- Original Value -->
+        <div class="calc-tab-panel" id="pct-orig">
+          <div class="form-inline">
+            <div class="form-group"><label class="form-label" for="pctOrigFinal">Final value</label><input type="number" class="form-control" id="pctOrigFinal" placeholder="e.g. 120" step="any" /></div>
+            <div class="form-group"><label class="form-label" for="pctOrigPct">Percentage change</label><input type="number" class="form-control" id="pctOrigPct" placeholder="e.g. 20" step="any" /></div>
+            <div class="form-group">
+              <label class="form-label" for="pctOrigType">Change type</label>
+              <select class="form-control" id="pctOrigType"><option value="increase">Increase</option><option value="decrease">Decrease</option></select>
+            </div>
+            <div class="form-group"><button class="btn btn-primary" id="pctOrigBtn">Calculate</button> <button class="btn btn-ghost" id="pctOrigReset">Clear</button></div>
+          </div>
+          <div class="result-area" id="pctOrigResult"></div>
+          <div class="error-msg" id="pctOrigError" role="alert"></div>
+        </div>
+      </div>
+
+      <section class="content-section">
+        <h2>What Is a Percentage?</h2>
+        <p>A percentage expresses a number as a fraction of 100. The word comes from the Latin <em>per centum</em>, meaning "by the hundred." When you say "15 per cent," you are saying 15 out of every 100 — or 15/100, which equals 0.15. Percentages provide a standardised way to compare proportions, changes and rates without being tied to any particular base unit.</p>
+        <p>Percentages are used everywhere: discounts in shops, interest rates on loans, tax rates, exam scores, survey results, battery levels and data dashboards. Understanding how to calculate them — and how they can mislead — is one of the most practically useful mathematical skills in everyday life.</p>
+      </section>
+
+      <section class="content-section">
+        <h2>How the Percentage Calculator Works</h2>
+        <p>Each tab in the calculator handles a different percentage problem. Here is what happens internally when you press Calculate:</p>
+        <ol>
+          <li><strong>Input validation</strong> — the calculator checks that every required field has a valid number. Empty fields and non-numeric values trigger an error message.</li>
+          <li><strong>Formula selection</strong> — the appropriate formula is chosen based on the tab you are using.</li>
+          <li><strong>Substitution</strong> — your values are substituted into the formula.</li>
+          <li><strong>Calculation</strong> — JavaScript performs the arithmetic and rounds the result to avoid floating-point artefacts.</li>
+          <li><strong>Display</strong> — the result is shown in the highlighted result area with a breakdown of the working.</li>
+        </ol>
+      </section>
+
+      <section class="content-section">
+        <h2>Percentage Formulas</h2>
+        <div class="formula-box">
+          <div class="formula">X% of Y = (X / 100) × Y</div>
+        </div>
+        <div class="formula-box">
+          <div class="formula">X is what % of Y = (X / Y) × 100</div>
+        </div>
+        <div class="formula-box">
+          <div class="formula">% Increase = ((New − Original) / Original) × 100</div>
+        </div>
+        <div class="formula-box">
+          <div class="formula">% Decrease = ((Original − New) / Original) × 100</div>
+        </div>
+        <div class="formula-box">
+          <div class="formula">% Difference = |A − B| / ((A + B) / 2) × 100</div>
+        </div>
+        <div class="formula-box">
+          <div class="formula">Original = Final / (1 ± P/100)</div>
+        </div>
+        <div class="formula-legend">
+          <span><code>X, Y</code> — input values</span>
+          <span><code>P</code> — percentage</span>
+          <span><code>|A−B|</code> — absolute difference</span>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>Step-by-Step Examples</h2>
+        <div class="example-box">
+          <h4>Example 1: Finding 15% of 200</h4>
+          <div class="example-step"><strong>Input:</strong> Percentage = 15, Value = 200</div>
+          <div class="example-step"><strong>Formula:</strong> (15 / 100) × 200</div>
+          <div class="example-step"><strong>Substitution:</strong> 0.15 × 200</div>
+          <div class="example-step"><strong>Result:</strong> 30</div>
+        </div>
+        <div class="example-box">
+          <h4>Example 2: Percentage increase from 80 to 100</h4>
+          <div class="example-step"><strong>Input:</strong> Original = 80, New = 100</div>
+          <div class="example-step"><strong>Formula:</strong> ((100 − 80) / 80) × 100</div>
+          <div class="example-step"><strong>Substitution:</strong> (20 / 80) × 100</div>
+          <div class="example-step"><strong>Result:</strong> 25% increase</div>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>History of Percentage Calculations</h2>
+        <p>The concept of expressing quantities as parts of a hundred dates back to ancient Rome, where taxes were often calculated as fractions of 100 (the <em>centesima</em>, or "hundredth part"). The Arabic mathematical tradition, which preserved and extended Greek and Indian mathematics, further developed proportional reasoning during the medieval period.</p>
+        <p>The familiar percent sign "%" evolved gradually. It originated as an abbreviation for the Italian <em>per cento</em> — "per hundred" — in the 15th century. Merchants and scribes wrote "p 100" or "p cento," and over time the abbreviation was contracted. By the 17th century, the modern "%" symbol, formed by the two zeros of "cento" separated by a slash, had become standard in European commercial documents.</p>
+        <p>Percentages became essential with the growth of banking, trade and taxation in Renaissance Italy and the Low Countries. Double-entry bookkeeping, described by Luca Pacioli in 1494, relied heavily on proportional calculations. The industrial revolution and the rise of statistics in the 19th century made percentages a universal language for data communication.</p>
+      </section>
+
+      <section class="content-section">
+        <h2>Where Percentages Are Used</h2>
+        <ul>
+          <li><strong>Shopping:</strong> Discounts, sales tax, tips and price comparisons.</li>
+          <li><strong>Finance:</strong> Interest rates, investment returns, loan APRs and inflation.</li>
+          <li><strong>Education:</strong> Exam scores, grade boundaries and pass rates.</li>
+          <li><strong>Statistics:</strong> Survey results, polling margins and demographic breakdowns.</li>
+          <li><strong>Business:</strong> Profit margins, growth rates, market share and KPIs.</li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <h3>Advantages</h3>
+        <ul>
+          <li>Provides a standardised scale for comparison regardless of the original units.</li>
+          <li>Intuitive — most people understand "20% off" more readily than "0.2 reduction."</li>
+          <li>Essential for financial literacy and everyday consumer decisions.</li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <h3>Limitations</h3>
+        <ul>
+          <li>Percentages can be misleading without context — a "100% increase" sounds dramatic but means doubling, not multiplying by 100.</li>
+          <li>Percentage change is not symmetric: increasing from 50 to 100 is a 100% increase, but decreasing from 100 to 50 is only a 50% decrease.</li>
+          <li>Percentage difference uses the average as a base, which can produce unexpected results when the two values are very different in magnitude.</li>
+        </ul>
+      </section>
+
+      <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">What is the difference between percentage increase and percentage difference? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Percentage increase compares a new value to a specific original value — it has a clear "before" and "after." Percentage difference compares two values without a defined starting point, using their average as the base. Use percentage increase when you know which value came first; use percentage difference when neither is the "original."</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">How do I find the original price before a percentage increase? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Use the "Original Value" tab. Enter the final price and the percentage increase, and the calculator divides by (1 + P/100) to recover the original. For example, if a price is £120 after a 20% increase, the original was 120 / 1.2 = £100.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Why does a 50% increase followed by a 50% decrease not return to the original? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Because each percentage change applies to a different base. Starting at 100, a 50% increase gives 150. A 50% decrease from 150 gives 75, not 100. The decrease is 50% of 150 (which is 75), not 50% of the original 100. This asymmetry is fundamental to how percentages work.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Can percentages be greater than 100%? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Yes. A percentage greater than 100% simply means the part exceeds the whole. For example, if a company's revenue grows from £1m to £2.5m, that is a 150% increase — the new revenue is 250% of the original, representing an increase of 150 percentage points above 100%.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">How is percentage difference calculated when the two values have different signs? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">The percentage difference formula uses the average of the two values as the denominator. If one value is negative, the average can be near zero, making the percentage difference very large or undefined. In such cases, percentage difference is not a meaningful measure — consider using absolute difference or a different comparison method instead.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">What does "percentage points" mean? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Percentage points measure the arithmetic difference between two percentages. If an interest rate rises from 3% to 5%, that is a 2 percentage point increase, but a 66.7% relative increase (the 2-point rise divided by the original 3%). The distinction matters in finance and statistics to avoid confusion.</div></div>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>Related Calculators</h2>
+        <div class="related-grid">
+          <a href="/pages/scientific-calculator.html" class="related-card"><span class="icon">🧮</span><span class="name">Scientific Calculator</span></a>
+          <a href="/pages/compound-interest-calculator.html" class="related-card"><span class="icon">📈</span><span class="name">Compound Interest</span></a>
+          <a href="/pages/simple-interest-calculator.html" class="related-card"><span class="icon">💰</span><span class="name">Simple Interest</span></a>
+          <a href="/pages/fraction-calculator.html" class="related-card"><span class="icon">½</span><span class="name">Fraction Calculator</span></a>
+          <a href="/pages/statistics-calculator.html" class="related-card"><span class="icon">📊</span><span class="name">Statistics Calculator</span></a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo"><span class="logo-icon">∑</span> CalcVerse</a>
+          <p>Thirty free, fast and accurate online calculators with clear explanations, worked examples and history.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Math</h4>
+          <ul>
+            <li><a href="/pages/scientific-calculator.html">Scientific</a></li>
+            <li><a href="/pages/fraction-calculator.html">Fractions</a></li>
+            <li><a href="/pages/quadratic-equation-calculator.html">Quadratic</a></li>
+            <li><a href="/pages/trigonometry-calculator.html">Trigonometry</a></li>
+            <li><a href="/pages/logarithm-calculator.html">Logarithms</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Finance</h4>
+          <ul>
+            <li><a href="/pages/compound-interest-calculator.html">Compound Interest</a></li>
+            <li><a href="/pages/simple-interest-calculator.html">Simple Interest</a></li>
+            <li><a href="/pages/loan-payment-calculator.html">Loan Payment</a></li>
+            <li><a href="/pages/bmi-calculator.html">BMI</a></li>
+            <li><a href="/pages/gpa-calculator.html">GPA</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Everyday</h4>
+          <ul>
+            <li><a href="/pages/percentage-calculator.html">Percentage</a></li>
+            <li><a href="/pages/age-calculator.html">Age</a></li>
+            <li><a href="/pages/date-difference-calculator.html">Date Difference</a></li>
+            <li><a href="/pages/time-calculator.html">Time</a></li>
+            <li><a href="/pages/unit-converter.html">Unit Converter</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 CalcVerse. Free for everyone.</span>
+        <span>Built with HTML, CSS and vanilla JavaScript.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/percentage.js"></script>
+</body>
+</html>

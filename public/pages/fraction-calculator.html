@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fraction Calculator — Add, Subtract, Multiply & Divide Fractions | CalcVerse</title>
+  <meta name="description" content="Free fraction calculator for adding, subtracting, multiplying and dividing fractions, mixed numbers and improper fractions with simplification and decimal conversion." />
+  <link rel="canonical" href="https://calcverse.app/pages/fraction-calculator.html" />
+  <meta property="og:title" content="Fraction Calculator — CalcVerse" />
+  <meta property="og:description" content="Add, subtract, multiply, divide and simplify fractions and mixed numbers." />
+  <meta property="og:type" content="website" />
+  <meta name="keywords" content="fraction calculator, add fractions, subtract fractions, multiply fractions, divide fractions, simplify fractions, mixed numbers" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="logo"><span class="logo-icon">∑</span> CalcVerse</a>
+      <nav class="main-nav" id="mainNav">
+        <a href="/">Home</a>
+        <a href="/#all-calculators">Calculators</a>
+        <a href="/#categories">Categories</a>
+        <a href="/#about">About</a>
+      </nav>
+      <div class="header-actions">
+        <div class="search-box">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="searchInput" placeholder="Search calculators…" autocomplete="off" aria-label="Search calculators" />
+          <div class="search-results" id="searchResults"></div>
+        </div>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <div class="content-container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span class="sep">›</span>
+        <a href="/#cat-math">Math &amp; Algebra</a><span class="sep">›</span>
+        <span>Fraction Calculator</span>
+      </nav>
+
+      <div class="page-header">
+        <h1>Fraction Calculator</h1>
+        <p class="lead">Add, subtract, multiply and divide fractions and mixed numbers with full step-by-step working. The calculator finds common denominators, simplifies results and converts between fractions, mixed numbers and decimals.</p>
+      </div>
+
+      <div class="calc-card">
+        <div class="calc-title"><span class="icon">½</span> Fraction Calculator</div>
+        <div class="calc-tabs">
+          <button class="calc-tab active" data-tab="frac-calc">Calculate</button>
+          <button class="calc-tab" data-tab="frac-simplify">Simplify</button>
+          <button class="calc-tab" data-tab="frac-convert">Convert</button>
+        </div>
+
+        <div class="calc-tab-panel active" id="frac-calc">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="frac1Whole">First fraction — whole number (optional)</label>
+              <input type="number" class="form-control" id="frac1Whole" placeholder="0" step="1" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="frac1Num">Numerator</label>
+              <input type="number" class="form-control" id="frac1Num" placeholder="e.g. 3" step="any" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="frac1Den">Denominator</label>
+              <input type="number" class="form-control" id="frac1Den" placeholder="e.g. 4" step="any" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="fracOp">Operation</label>
+            <select class="form-control" id="fracOp">
+              <option value="+">Add (+)</option>
+              <option value="-">Subtract (−)</option>
+              <option value="*">Multiply (×)</option>
+              <option value="/">Divide (÷)</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="frac2Whole">Second fraction — whole number (optional)</label>
+              <input type="number" class="form-control" id="frac2Whole" placeholder="0" step="1" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="frac2Num">Numerator</label>
+              <input type="number" class="form-control" id="frac2Num" placeholder="e.g. 1" step="any" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="frac2Den">Denominator</label>
+              <input type="number" class="form-control" id="frac2Den" placeholder="e.g. 2" step="any" />
+            </div>
+          </div>
+          <div class="form-inline">
+            <button class="btn btn-primary" id="fracCalcBtn">Calculate</button>
+            <button class="btn btn-ghost" id="fracCalcReset">Clear</button>
+          </div>
+          <div class="result-area" id="fracCalcResult"></div>
+          <div class="error-msg" id="fracCalcError" role="alert"></div>
+        </div>
+
+        <div class="calc-tab-panel" id="frac-simplify">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="simpNum">Numerator</label>
+              <input type="number" class="form-control" id="simpNum" placeholder="e.g. 12" step="any" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="simpDen">Denominator</label>
+              <input type="number" class="form-control" id="simpDen" placeholder="e.g. 18" step="any" />
+            </div>
+          </div>
+          <div class="form-inline">
+            <button class="btn btn-primary" id="simpBtn">Simplify</button>
+            <button class="btn btn-ghost" id="simpReset">Clear</button>
+          </div>
+          <div class="result-area" id="simpResult"></div>
+          <div class="error-msg" id="simpError" role="alert"></div>
+        </div>
+
+        <div class="calc-tab-panel" id="frac-convert">
+          <div class="form-group">
+            <label class="form-label" for="convInput">Enter a decimal or fraction (e.g. 3.75 or 7/4)</label>
+            <input type="text" class="form-control" id="convInput" placeholder="e.g. 3.75 or 7/4" />
+          </div>
+          <div class="form-inline">
+            <button class="btn btn-primary" id="convBtn">Convert</button>
+            <button class="btn btn-ghost" id="convReset">Clear</button>
+          </div>
+          <div class="result-area" id="convResult"></div>
+          <div class="error-msg" id="convError" role="alert"></div>
+        </div>
+      </div>
+
+      <section class="content-section">
+        <h2>What Is a Fraction?</h2>
+        <p>A fraction represents a part of a whole. It consists of a numerator (the top number, which says how many parts you have) and a denominator (the bottom number, which says how many equal parts the whole is divided into). For example, <strong>3/4</strong> means three out of four equal parts.</p>
+        <p>A <strong>proper fraction</strong> has a numerator smaller than its denominator (like 3/4). An <strong>improper fraction</strong> has a numerator larger than or equal to its denominator (like 7/4). A <strong>mixed number</strong> combines a whole number and a proper fraction (like 1¾, which equals 7/4). Every improper fraction can be written as a mixed number and vice versa.</p>
+      </section>
+
+      <section class="content-section">
+        <h2>How the Fraction Calculator Works</h2>
+        <p>When you enter two fractions and choose an operation, the calculator processes them in several stages:</p>
+        <ol>
+          <li><strong>Parse</strong> — each input is read as an optional whole number, a numerator and a denominator. If a whole number is provided, the fraction is converted to an improper fraction first (e.g., 1¾ becomes 7/4).</li>
+          <li><strong>Validate</strong> — denominators are checked to ensure they are not zero. Numerators and denominators must be valid numbers.</li>
+          <li><strong>Operate</strong> — depending on the operation, the calculator either finds a common denominator (for addition and subtraction) or applies the multiply-across or invert-and-multiply rule (for multiplication and division).</li>
+          <li><strong>Simplify</strong> — the result is reduced to its lowest terms by dividing both numerator and denominator by their greatest common divisor (GCD).</li>
+          <li><strong>Convert</strong> — if the result is an improper fraction, it is also shown as a mixed number and as a decimal.</li>
+        </ol>
+      </section>
+
+      <section class="content-section">
+        <h2>Fraction Formulas</h2>
+        <div class="formula-box">
+          <div class="formula">a/b + c/d = (a×d + c×b) / (b×d)</div>
+        </div>
+        <div class="formula-box">
+          <div class="formula">a/b − c/d = (a×d − c×b) / (b×d)</div>
+        </div>
+        <div class="formula-box">
+          <div class="formula">a/b × c/d = (a×c) / (b×d)</div>
+        </div>
+        <div class="formula-box">
+          <div class="formula">a/b ÷ c/d = (a×d) / (b×c)</div>
+        </div>
+        <div class="formula-legend">
+          <span><code>a, c</code> — numerators</span>
+          <span><code>b, d</code> — denominators</span>
+        </div>
+        <p>For addition and subtraction, the calculator finds a common denominator using the least common multiple (LCM) of the two denominators, which keeps the intermediate numbers as small as possible.</p>
+      </section>
+
+      <section class="content-section">
+        <h2>Step-by-Step Examples</h2>
+        <div class="example-box">
+          <h4>Example 1: Adding 3/4 + 1/2</h4>
+          <div class="example-step"><strong>Input:</strong> 3/4 + 1/2</div>
+          <div class="example-step"><strong>Common denominator:</strong> LCM(4, 2) = 4</div>
+          <div class="example-step"><strong>Convert:</strong> 3/4 stays as 3/4; 1/2 becomes 2/4</div>
+          <div class="example-step"><strong>Add:</strong> (3 + 2) / 4 = 5/4</div>
+          <div class="example-step"><strong>Simplify:</strong> 5/4 = 1¼ (mixed number) = 1.25 (decimal)</div>
+          <div class="example-step"><strong>Result:</strong> 5/4 or 1¼</div>
+        </div>
+        <div class="example-box">
+          <h4>Example 2: Multiplying 2/3 × 3/5</h4>
+          <div class="example-step"><strong>Input:</strong> 2/3 × 3/5</div>
+          <div class="example-step"><strong>Multiply numerators:</strong> 2 × 3 = 6</div>
+          <div class="example-step"><strong>Multiply denominators:</strong> 3 × 5 = 15</div>
+          <div class="example-step"><strong>Result:</strong> 6/15</div>
+          <div class="example-step"><strong>Simplify:</strong> GCD(6, 15) = 3, so 6/15 = 2/5</div>
+          <div class="example-step"><strong>Final:</strong> 2/5 = 0.4</div>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>History of Fractions</h2>
+        <p>Fractions are among the oldest mathematical concepts. The ancient Egyptians used <strong>unit fractions</strong> — fractions with a numerator of 1 — as early as 1800 BCE. The Rhind Mathematical Papyrus, dating to around 1550 BCE, contains tables for expressing fractions like 2/5 as sums of unit fractions (1/3 + 1/15). This system was practical for division of grain and land but cumbersome for general calculation.</p>
+        <p>The Babylonians took a different approach, using a sexagesimal (base-60) system that naturally represented fractions with denominators of 60, 3600 and so on. This is why we still divide hours into 60 minutes and minutes into 60 seconds.</p>
+        <p>The modern notation of a horizontal bar separating numerator and denominator was introduced by the Indian mathematician Brahmagupta in the 7th century and transmitted to Europe through Arabic mathematical texts. Fibonacci's <em>Liber Abaci</em> (1202) helped popularise the Hindu-Arabic numeral system, including fractions, in Europe.</p>
+        <p>The word "fraction" comes from the Latin <em>frangere</em>, meaning "to break" — a fraction is literally a broken piece of a whole.</p>
+      </section>
+
+      <section class="content-section">
+        <h2>Where Fractions Are Used</h2>
+        <ul>
+          <li><strong>Cooking:</strong> Recipes use fractional measurements (½ cup, ¼ teaspoon) that often need scaling.</li>
+          <li><strong>Carpentry and construction:</strong> Measurements in inches are naturally fractional (3/8", 1/16").</li>
+          <li><strong>Music:</strong> Time signatures (3/4, 6/8) and note durations are fractional.</li>
+          <li><strong>Finance:</strong> Stock prices were historically quoted in fractions (e.g., 12½ dollars).</li>
+          <li><strong>Education:</strong> Fractions are foundational for algebra, ratios, probability and proportional reasoning.</li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <h3>Advantages</h3>
+        <ul>
+          <li>Fractions give exact answers, unlike decimals which may need rounding.</li>
+          <li>They are natural for expressing ratios and proportions.</li>
+          <li>Working with fractions builds number sense and algebraic reasoning.</li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <h3>Limitations</h3>
+        <ul>
+          <li>Calculations with fractions can produce large intermediate numbers before simplification.</li>
+          <li>Not all fractions convert neatly to decimals (e.g., 1/3 = 0.333…).</li>
+          <li>Comparing fractions requires finding a common denominator or cross-multiplying.</li>
+        </ul>
+      </section>
+
+      <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">How do I add fractions with different denominators? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">You need a common denominator first. The easiest approach is to find the least common multiple (LCM) of the two denominators. Convert each fraction so its denominator equals the LCM, then add the numerators and keep the denominator the same. For example, 1/3 + 1/4: the LCM of 3 and 4 is 12, so 4/12 + 3/12 = 7/12.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Why do we flip the second fraction when dividing? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Dividing by a fraction is the same as multiplying by its reciprocal. This works because division is the inverse of multiplication: a/b ÷ c/d = a/b × d/c. The reciprocal (flipping) converts the division into a multiplication, which is simpler to compute. For example, 3/4 ÷ 2/3 = 3/4 × 3/2 = 9/8.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">What is a mixed number and when should I use one? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">A mixed number combines a whole number and a proper fraction, like 2⅓. It is useful for everyday measurements where you want to express quantities intuitively (2⅓ cups of flour is easier to visualise than 7/3 cups). In mathematical calculations, improper fractions (7/3) are usually easier to work with, so the calculator shows both forms.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">How does the calculator simplify fractions? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">After performing the operation, the calculator finds the greatest common divisor (GCD) of the numerator and denominator using the Euclidean algorithm, then divides both by that GCD. For example, 6/15: GCD(6, 15) = 3, so the simplified form is 2/5. If the GCD is 1, the fraction is already in its simplest form.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Can I enter negative fractions? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Yes. Enter a negative sign in the numerator or denominator field. The calculator handles negative fractions correctly and follows the standard sign rules: a negative times a positive is negative, and a negative times a negative is positive.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Why can't the denominator be zero? <span class="chevron">▾</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Division by zero is undefined in mathematics. A fraction with denominator zero would mean dividing something into zero equal parts, which is not a meaningful operation. The calculator will display an error message if you enter zero as a denominator.</div></div>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>Related Calculators</h2>
+        <div class="related-grid">
+          <a href="/pages/percentage-calculator.html" class="related-card"><span class="icon">％</span><span class="name">Percentage Calculator</span></a>
+          <a href="/pages/scientific-calculator.html" class="related-card"><span class="icon">🧮</span><span class="name">Scientific Calculator</span></a>
+          <a href="/pages/quadratic-equation-calculator.html" class="related-card"><span class="icon">x²</span><span class="name">Quadratic Equation</span></a>
+          <a href="/pages/algebra-calculator.html" class="related-card"><span class="icon">𝑥</span><span class="name">Algebra Calculator</span></a>
+          <a href="/pages/probability-calculator.html" class="related-card"><span class="icon">🎲</span><span class="name">Probability Calculator</span></a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo"><span class="logo-icon">∑</span> CalcVerse</a>
+          <p>Thirty free, fast and accurate online calculators with clear explanations, worked examples and history.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Math</h4>
+          <ul>
+            <li><a href="/pages/scientific-calculator.html">Scientific</a></li>
+            <li><a href="/pages/fraction-calculator.html">Fractions</a></li>
+            <li><a href="/pages/quadratic-equation-calculator.html">Quadratic</a></li>
+            <li><a href="/pages/trigonometry-calculator.html">Trigonometry</a></li>
+            <li><a href="/pages/logarithm-calculator.html">Logarithms</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Finance</h4>
+          <ul>
+            <li><a href="/pages/compound-interest-calculator.html">Compound Interest</a></li>
+            <li><a href="/pages/simple-interest-calculator.html">Simple Interest</a></li>
+            <li><a href="/pages/loan-payment-calculator.html">Loan Payment</a></li>
+            <li><a href="/pages/bmi-calculator.html">BMI</a></li>
+            <li><a href="/pages/gpa-calculator.html">GPA</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Everyday</h4>
+          <ul>
+            <li><a href="/pages/percentage-calculator.html">Percentage</a></li>
+            <li><a href="/pages/age-calculator.html">Age</a></li>
+            <li><a href="/pages/date-difference-calculator.html">Date Difference</a></li>
+            <li><a href="/pages/time-calculator.html">Time</a></li>
+            <li><a href="/pages/unit-converter.html">Unit Converter</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 CalcVerse. Free for everyone.</span>
+        <span>Built with HTML, CSS and vanilla JavaScript.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/fraction.js"></script>
+</body>
+</html>
